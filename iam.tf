@@ -1,4 +1,3 @@
-# Define the IAM policy document
 resource "aws_iam_policy" "nabilah_dynamodb_policy" {
   name        = "DynamoDBTableAccessPolicy"
   description = "Policy to grant specific permissions to a DynamoDB table and its indexes"
@@ -19,7 +18,8 @@ resource "aws_iam_policy" "nabilah_dynamodb_policy" {
           "dynamodb:GetItem",
           "dynamodb:Scan",
           "dynamodb:Query",
-          "dynamodb:UpdateItem"
+          "dynamodb:UpdateItem",
+          "dynamodb:ListTables"  # Added permission to list tables
         ]
         Resource = [
           "arn:aws:dynamodb:${var.region}:${var.account_id}:table/${var.table_name}",
