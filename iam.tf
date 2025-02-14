@@ -25,6 +25,12 @@ resource "aws_iam_policy" "nabilah_dynamodb_policy" {
           "arn:aws:dynamodb:${var.region}:${var.account_id}:table/${var.table_name}",
           "arn:aws:dynamodb:${var.region}:${var.account_id}:table/${var.table_name}/index/*"
         ]
+      },
+      {
+        Sid      = "DynamoDBListTables"
+        Effect   = "Allow"
+        Action   = "dynamodb:ListTables"
+        Resource = "*"
       }
     ]
   })
